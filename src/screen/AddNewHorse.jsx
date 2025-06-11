@@ -36,7 +36,7 @@ const AddNewHorse = () => {
       <View style={styles.header}>
         <TouchableOpacity
           style={styles.backButton}
-          onPress={() => navigate.navigate("HomeTabs")} // Navigate back to HomeTabs
+          onPress={() => navigate.goBack()} // Navigate back to HomeTabs
         >
           <Ionicons name="arrow-back" size={24} color="#FFF" />
         </TouchableOpacity>

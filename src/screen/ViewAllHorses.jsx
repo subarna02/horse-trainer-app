@@ -40,9 +40,7 @@ const ViewAllHorses = () => {
   ];
 
   return (
-    <ScrollView
-      contentContainerStyle={[styles.container, { paddingTop: insets.top }]}
-    >
+    <View style={[styles.container, { paddingTop: insets.top }]}>
       {/* Header */}
       {/* <View style={styles.header}>
         <TouchableOpacity
@@ -54,9 +52,8 @@ const ViewAllHorses = () => {
         <Text style={styles.headerTitle}>View All Horses</Text>
       </View> */}
 
-      {/* Horses List Section */}
-      <View style={styles.horsesSection}>
-        <Text style={styles.sectionTitle}>All Horses</Text>
+      {/* Horses List Section */}   
+      <ScrollView contentContainerStyle={styles.horsesSection}>
         {horses.map((horse) => (
           <View key={horse.id} style={styles.horseCard}>
             <Text style={styles.horseText}>
@@ -73,8 +70,30 @@ const ViewAllHorses = () => {
             </Text>
           </View>
         ))}
-      </View>
-    </ScrollView>
+      </ScrollView>
+      <TouchableOpacity
+        onPress={() => navigate.navigate("AddHorse")} // Navigate to AddNewHorse screen
+        style={{
+          position: "absolute",
+          bottom: 20,
+          right: 20,
+          height: 50,
+          width: 50,
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#8B4513", // Saddle brown theme
+          borderRadius: 50,
+          padding: 10,
+          shadowColor: "#000",
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 0.2,
+          shadowRadius: 4,
+          elevation: 5, // For Android shadow
+        }}
+      >
+        <Text>+</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
@@ -85,6 +104,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     backgroundColor: "#F5F5F5", // Light gray background
     padding: 20,
+    position: "relative", // For absolute positioning of the add button
   },
   header: {
     flexDirection: "row", // Align back button and title horizontally
